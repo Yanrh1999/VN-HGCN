@@ -140,7 +140,7 @@ def run(n=1, dataset='dblp4MAGNN', num_layers=4, virtual_node=False, vn_num=1, *
                         dropout_rate=kwargs['dropout'], att_dim=kwargs['att_dim']).to(device)
         optimizer = optim.Adam(model.parameters(), lr=kwargs['lr'], weight_decay=kwargs['weight_decay'])
         loss_fn = nn.CrossEntropyLoss()
-        epochs = 500
+        epochs = 2000
         max_valid_loss = np.inf
         early_stop = 100
         for epoch in range(epochs):

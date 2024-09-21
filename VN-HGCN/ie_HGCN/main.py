@@ -46,24 +46,36 @@ if __name__ == '__main__':
     p_id = 9
     p_std = 1e0
     p_hop = 6
+
+    if perturbation is True:
+        print("Perturb node from {}hops away".format(p_hop))
+        run(n=run_times, dataset=dataset, virtual_node=virtual_node, vn_num=vn_num,
+            initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
+            att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
+            perturbation=perturbation, p_id=p_id, p_std=p_std, p_hop=p_hop)
+    else:
+        run(n=run_times, dataset=dataset, virtual_node=virtual_node, vn_num=vn_num,
+            initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
+            att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
+            perturbation=perturbation, p_id=p_id, p_std=p_std, p_hop=p_hop)
     
-    for v in [True, False]:
-        for p in [True, False]:
-            if p == True:
-                for p_std in [1e0, 1e-1, 1e-2 ,1e-3, 1e-4]:
-                    for p_hop in [3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
-                        print("-"*10 + "{}".format(p_hop) + "-"*10)
-                        run(n=run_times, dataset=dataset, virtual_node=v, vn_num=vn_num,
-                            initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
-                            att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
-                            perturbation=p, p_id=p_id, p_std=p_std, p_hop=p_hop)
-            else:
-                for p_hop in [3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
-                    print("-"*10 + "{}".format(p_hop) + "-"*10)
-                    run(n=run_times, dataset=dataset, virtual_node=v, vn_num=vn_num,
-                        initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
-                        att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
-                        perturbation=p, p_id=p_id, p_std=p_std, p_hop=p_hop)
+    # for v in [True, False]:
+    #     for p in [True, False]:
+    #         if p == True:
+    #             for p_std in [1e0, 1e-1, 1e-2 ,1e-3, 1e-4]:
+    #                 for p_hop in [3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
+    #                     print("-"*10 + "{}".format(p_hop) + "-"*10)
+    #                     run(n=run_times, dataset=dataset, virtual_node=v, vn_num=vn_num,
+    #                         initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
+    #                         att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
+    #                         perturbation=p, p_id=p_id, p_std=p_std, p_hop=p_hop)
+    #         else:
+    #             for p_hop in [3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
+    #                 print("-"*10 + "{}".format(p_hop) + "-"*10)
+    #                 run(n=run_times, dataset=dataset, virtual_node=v, vn_num=vn_num,
+    #                     initialize=True, num_layers=num_layers, semantic_dim=semantic_dim,
+    #                     att_dim=att_dim, dropout=dropout, lr=lr, weight_decay=weight_decay, drop_edge=drop_edge,
+    #                     perturbation=p, p_id=p_id, p_std=p_std, p_hop=p_hop)
     
     
     # run_savedmodel(n=run_times, dataset=dataset, virtual_node=virtual_node, vn_num=vn_num,
